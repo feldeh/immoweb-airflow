@@ -1,2 +1,4 @@
-immoweb-scraper/
-immoweb-data-analysis/
+scraper/
+analysis/
+.env
+__pycache__/

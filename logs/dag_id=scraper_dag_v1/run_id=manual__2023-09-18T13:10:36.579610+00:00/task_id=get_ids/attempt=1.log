@@ -1,0 +1,26 @@
+[2023-09-18T13:10:38.204+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: scraper_dag_v1.get_ids manual__2023-09-18T13:10:36.579610+00:00 [queued]>
+[2023-09-18T13:10:38.214+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: scraper_dag_v1.get_ids manual__2023-09-18T13:10:36.579610+00:00 [queued]>
+[2023-09-18T13:10:38.215+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-18T13:10:38.228+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): get_ids> on 2023-09-18 13:10:36.579610+00:00
+[2023-09-18T13:10:38.235+0000] {standard_task_runner.py:57} INFO - Started process 3487 to run task
+[2023-09-18T13:10:38.242+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'scraper_dag_v1', 'get_ids', 'manual__2023-09-18T13:10:36.579610+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/scraper_dag.py', '--cfg-path', '/tmp/tmpwmmzg4ws']
+[2023-09-18T13:10:38.247+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask get_ids
+[2023-09-18T13:10:38.319+0000] {task_command.py:415} INFO - Running <TaskInstance: scraper_dag_v1.get_ids manual__2023-09-18T13:10:36.579610+00:00 [running]> on host ae4a9cdd5e86
+[2023-09-18T13:10:38.412+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='felicien' AIRFLOW_CTX_DAG_ID='scraper_dag_v1' AIRFLOW_CTX_TASK_ID='get_ids' AIRFLOW_CTX_EXECUTION_DATE='2023-09-18T13:10:36.579610+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-18T13:10:36.579610+00:00'
+[2023-09-18T13:10:40.921+0000] {logging_mixin.py:151} INFO - Number of ids: 60
+[2023-09-18T13:10:40.927+0000] {logging_mixin.py:151} INFO - /opt/***
+[2023-09-18T13:10:40.930+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/scraper/id_scraper.py", line 69, in id_scraper
+    save_to_txt(ids)
+  File "/opt/airflow/dags/scraper/id_scraper.py", line 56, in save_to_txt
+    with open(file_path, 'w') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/data/properties_ids_test.txt'
+[2023-09-18T13:10:40.952+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=scraper_dag_v1, task_id=get_ids, execution_date=20230918T131036, start_date=20230918T131038, end_date=20230918T131040
+[2023-09-18T13:10:40.967+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 11 for task get_ids ([Errno 2] No such file or directory: '/opt/airflow/data/properties_ids_test.txt'; 3487)
+[2023-09-18T13:10:40.983+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-18T13:10:41.004+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
