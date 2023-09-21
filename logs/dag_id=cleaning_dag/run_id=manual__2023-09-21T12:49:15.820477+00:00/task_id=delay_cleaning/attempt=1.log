@@ -1,0 +1,15 @@
+[2023-09-21T12:49:17.662+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cleaning_dag.delay_cleaning manual__2023-09-21T12:49:15.820477+00:00 [queued]>
+[2023-09-21T12:49:17.669+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cleaning_dag.delay_cleaning manual__2023-09-21T12:49:15.820477+00:00 [queued]>
+[2023-09-21T12:49:17.670+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T12:49:17.680+0000] {taskinstance.py:1380} INFO - Executing <Task(TimeDeltaSensor): delay_cleaning> on 2023-09-21 12:49:15.820477+00:00
+[2023-09-21T12:49:17.686+0000] {standard_task_runner.py:57} INFO - Started process 12319 to run task
+[2023-09-21T12:49:17.691+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'cleaning_dag', 'delay_cleaning', 'manual__2023-09-21T12:49:15.820477+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/cleaning_dag.py', '--cfg-path', '/tmp/tmplbhlm9sw']
+[2023-09-21T12:49:17.695+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask delay_cleaning
+[2023-09-21T12:49:17.750+0000] {task_command.py:415} INFO - Running <TaskInstance: cleaning_dag.delay_cleaning manual__2023-09-21T12:49:15.820477+00:00 [running]> on host c14470e00ccc
+[2023-09-21T12:49:17.833+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='felicien' AIRFLOW_CTX_DAG_ID='cleaning_dag' AIRFLOW_CTX_TASK_ID='delay_cleaning' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T12:49:15.820477+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-21T12:49:15.820477+00:00'
+[2023-09-21T12:49:17.835+0000] {time_delta.py:47} INFO - Checking if the time (2023-09-21T12:49:18.820477+00:00) has come
+[2023-09-21T12:50:17.869+0000] {time_delta.py:47} INFO - Checking if the time (2023-09-21T12:49:18.820477+00:00) has come
+[2023-09-21T12:50:17.872+0000] {base.py:287} INFO - Success criteria met. Exiting.
+[2023-09-21T12:50:17.920+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=cleaning_dag, task_id=delay_cleaning, execution_date=20230921T124915, start_date=20230921T124917, end_date=20230921T125017
+[2023-09-21T12:50:17.992+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-21T12:50:18.040+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,81 @@
+[2023-09-21T13:50:38.274+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: scraping_dag_v2.get_ids manual__2023-09-21T13:50:34.997597+00:00 [queued]>
+[2023-09-21T13:50:38.294+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: scraping_dag_v2.get_ids manual__2023-09-21T13:50:34.997597+00:00 [queued]>
+[2023-09-21T13:50:38.296+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T13:50:38.320+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): get_ids> on 2023-09-21 13:50:34.997597+00:00
+[2023-09-21T13:50:38.332+0000] {standard_task_runner.py:57} INFO - Started process 16094 to run task
+[2023-09-21T13:50:38.346+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'scraping_dag_v2', 'get_ids', 'manual__2023-09-21T13:50:34.997597+00:00', '--job-id', '174', '--raw', '--subdir', 'DAGS_FOLDER/scraping_dag.py', '--cfg-path', '/tmp/tmp4hi4qtjr']
+[2023-09-21T13:50:38.359+0000] {standard_task_runner.py:85} INFO - Job 174: Subtask get_ids
+[2023-09-21T13:50:38.447+0000] {task_command.py:415} INFO - Running <TaskInstance: scraping_dag_v2.get_ids manual__2023-09-21T13:50:34.997597+00:00 [running]> on host c14470e00ccc
+[2023-09-21T13:50:38.547+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='felicien' AIRFLOW_CTX_DAG_ID='scraping_dag_v2' AIRFLOW_CTX_TASK_ID='get_ids' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T13:50:34.997597+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-21T13:50:34.997597+00:00'
+[2023-09-21T13:50:46.582+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.8/socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0xffff81b15040>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.immoweb.be', port=443): Max retries exceeded with url: /en/search-results/house/for-sale?countries=BE&isALifeAnnuitySale=false&page=1&orderBy=newest (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff81b15040>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/scraping/id_scraper.py", line 69, in id_scraper
+    ids = get_ids(pages)
+  File "/opt/airflow/dags/src/scraping/id_scraper.py", line 42, in get_ids
+    flattened_result = list(itertools.chain.from_iterable(result))
+  File "/usr/local/lib/python3.8/concurrent/futures/_base.py", line 619, in result_iterator
+    yield fs.pop().result()
+  File "/usr/local/lib/python3.8/concurrent/futures/_base.py", line 444, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/opt/airflow/dags/src/scraping/id_scraper.py", line 39, in <lambda>
+    result = executor.map(lambda page: get_ids_from_page(page, ['house', 'apartment'], session), range(1, pages+1))
+  File "/opt/airflow/dags/src/scraping/id_scraper.py", line 20, in get_ids_from_page
+    r = session.get(url_lists)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.immoweb.be', port=443): Max retries exceeded with url: /en/search-results/house/for-sale?countries=BE&isALifeAnnuitySale=false&page=1&orderBy=newest (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff81b15040>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2023-09-21T13:50:46.623+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=scraping_dag_v2, task_id=get_ids, execution_date=20230921T135034, start_date=20230921T135038, end_date=20230921T135046
+[2023-09-21T13:50:46.664+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 174 for task get_ids (HTTPSConnectionPool(host='www.immoweb.be', port=443): Max retries exceeded with url: /en/search-results/house/for-sale?countries=BE&isALifeAnnuitySale=false&page=1&orderBy=newest (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff81b15040>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')); 16094)
+[2023-09-21T13:50:46.737+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-21T13:50:46.771+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

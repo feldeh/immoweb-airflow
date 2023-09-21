@@ -1,0 +1,12 @@
+[2023-09-21T13:58:55.314+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: master_dag.trigger_cleaning manual__2023-09-21T13:58:49.981672+00:00 [queued]>
+[2023-09-21T13:58:55.351+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: master_dag.trigger_cleaning manual__2023-09-21T13:58:49.981672+00:00 [queued]>
+[2023-09-21T13:58:55.353+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T13:58:55.406+0000] {taskinstance.py:1380} INFO - Executing <Task(TriggerDagRunOperator): trigger_cleaning> on 2023-09-21 13:58:49.981672+00:00
+[2023-09-21T13:58:55.428+0000] {standard_task_runner.py:57} INFO - Started process 16563 to run task
+[2023-09-21T13:58:55.452+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'master_dag', 'trigger_cleaning', 'manual__2023-09-21T13:58:49.981672+00:00', '--job-id', '187', '--raw', '--subdir', 'DAGS_FOLDER/master_dag.py', '--cfg-path', '/tmp/tmp829j6bz7']
+[2023-09-21T13:58:55.462+0000] {standard_task_runner.py:85} INFO - Job 187: Subtask trigger_cleaning
+[2023-09-21T13:58:55.593+0000] {task_command.py:415} INFO - Running <TaskInstance: master_dag.trigger_cleaning manual__2023-09-21T13:58:49.981672+00:00 [running]> on host c14470e00ccc
+[2023-09-21T13:58:55.743+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='master_dag' AIRFLOW_CTX_TASK_ID='trigger_cleaning' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T13:58:49.981672+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-21T13:58:49.981672+00:00'
+[2023-09-21T13:58:55.954+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=master_dag, task_id=trigger_cleaning, execution_date=20230921T135849, start_date=20230921T135855, end_date=20230921T135855
+[2023-09-21T13:58:56.017+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-21T13:58:56.060+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
