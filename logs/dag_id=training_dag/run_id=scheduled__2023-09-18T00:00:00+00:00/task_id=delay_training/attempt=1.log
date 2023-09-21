@@ -1,0 +1,14 @@
+[2023-09-21T14:31:05.178+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: training_dag.delay_training scheduled__2023-09-18T00:00:00+00:00 [queued]>
+[2023-09-21T14:31:05.189+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: training_dag.delay_training scheduled__2023-09-18T00:00:00+00:00 [queued]>
+[2023-09-21T14:31:05.190+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T14:31:05.206+0000] {taskinstance.py:1380} INFO - Executing <Task(TimeDeltaSensor): delay_training> on 2023-09-18 00:00:00+00:00
+[2023-09-21T14:31:05.227+0000] {standard_task_runner.py:57} INFO - Started process 1472 to run task
+[2023-09-21T14:31:05.235+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'training_dag', 'delay_training', 'scheduled__2023-09-18T00:00:00+00:00', '--job-id', '196', '--raw', '--subdir', 'DAGS_FOLDER/training_dag.py', '--cfg-path', '/tmp/tmpyladdbtf']
+[2023-09-21T14:31:05.240+0000] {standard_task_runner.py:85} INFO - Job 196: Subtask delay_training
+[2023-09-21T14:31:05.322+0000] {task_command.py:415} INFO - Running <TaskInstance: training_dag.delay_training scheduled__2023-09-18T00:00:00+00:00 [running]> on host 44511c2b2f88
+[2023-09-21T14:31:05.946+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='training_dag' AIRFLOW_CTX_TASK_ID='delay_training' AIRFLOW_CTX_EXECUTION_DATE='2023-09-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-09-18T00:00:00+00:00'
+[2023-09-21T14:31:05.951+0000] {time_delta.py:47} INFO - Checking if the time (2023-09-18T00:00:08+00:00) has come
+[2023-09-21T14:31:05.953+0000] {base.py:287} INFO - Success criteria met. Exiting.
+[2023-09-21T14:31:05.983+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=training_dag, task_id=delay_training, execution_date=20230918T000000, start_date=20230921T143105, end_date=20230921T143105
+[2023-09-21T14:31:06.085+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-21T14:31:06.152+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

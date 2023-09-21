@@ -1,7 +1,6 @@
 from airflow.models import DAG
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from datetime import datetime, timedelta
-from airflow.sensors.time_delta import TimeDeltaSensor
 
 
 default_args = {
@@ -23,10 +22,6 @@ with DAG(
         trigger_dag_id='scraping_dag_v2',
     )
 
-    # delay_cleaning = TimeDeltaSensor(
-    #     task_id='delay_cleaning',
-    #     delta=timedelta(seconds=20)
-    # )
 
     trigger_cleaning = TriggerDagRunOperator(
         task_id='trigger_cleaning',
@@ -34,5 +29,10 @@ with DAG(
     )
 
 
-trigger_scraping >> trigger_cleaning
-# trigger_scraping >> delay_cleaning >> trigger_cleaning
+    trigger_training = TriggerDagRunOperator(
+        task_id='trigger_training',
+        trigger_dag_id='training_dag',
+    )
+
+
+trigger_scraping >> trigger_cleaning >> trigger_training

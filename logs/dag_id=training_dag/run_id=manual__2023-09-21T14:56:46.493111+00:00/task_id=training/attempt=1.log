@@ -1,0 +1,17 @@
+[2023-09-21T14:57:53.383+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: training_dag.training manual__2023-09-21T14:56:46.493111+00:00 [queued]>
+[2023-09-21T14:57:53.391+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: training_dag.training manual__2023-09-21T14:56:46.493111+00:00 [queued]>
+[2023-09-21T14:57:53.392+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T14:57:53.403+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): training> on 2023-09-21 14:56:46.493111+00:00
+[2023-09-21T14:57:53.413+0000] {standard_task_runner.py:57} INFO - Started process 1779 to run task
+[2023-09-21T14:57:53.418+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'training_dag', 'training', 'manual__2023-09-21T14:56:46.493111+00:00', '--job-id', '224', '--raw', '--subdir', 'DAGS_FOLDER/training_dag.py', '--cfg-path', '/tmp/tmpf6j7gkhh']
+[2023-09-21T14:57:53.422+0000] {standard_task_runner.py:85} INFO - Job 224: Subtask training
+[2023-09-21T14:57:53.481+0000] {task_command.py:415} INFO - Running <TaskInstance: training_dag.training manual__2023-09-21T14:56:46.493111+00:00 [running]> on host 0a66876713cc
+[2023-09-21T14:57:53.564+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='training_dag' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T14:56:46.493111+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-21T14:56:46.493111+00:00'
+[2023-09-21T14:57:55.010+0000] {logging_mixin.py:151} INFO - Cross validation results: {'fit_time': array([0.15502286, 0.47536588, 0.08444762, 0.07667851, 0.0780468 ]), 'score_time': array([0.00895023, 0.00822568, 0.00612402, 0.00575209, 0.0053916 ]), 'test_neg_mean_squared_error': array([-1.96381170e+10, -2.34180923e+10, -1.04044875e+10, -2.53062366e+10,
+       -1.14086289e+10]), 'train_neg_mean_squared_error': array([-2.51304348e+07, -2.51304348e+07, -4.15039062e-03, -2.78108016e-03,
+       -2.40833333e+07]), 'test_r2': array([-4.36723513, -0.36817891, -0.69037221, -0.56021594,  0.11370016]), 'train_r2': array([0.99815219, 0.99781473, 1.        , 1.        , 0.9980722 ])}
+[2023-09-21T14:57:55.496+0000] {logging_mixin.py:151} INFO - Mean accuracy score: -1.17+/-1.62
+[2023-09-21T14:57:55.516+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-21T14:57:55.538+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=training_dag, task_id=training, execution_date=20230921T145646, start_date=20230921T145753, end_date=20230921T145755
+[2023-09-21T14:57:55.609+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-21T14:57:55.633+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,28 @@
+[2023-09-21T14:34:22.908+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: training_dag.training manual__2023-09-21T14:33:10.760031+00:00 [queued]>
+[2023-09-21T14:34:22.916+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: training_dag.training manual__2023-09-21T14:33:10.760031+00:00 [queued]>
+[2023-09-21T14:34:22.917+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-21T14:34:22.926+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): training> on 2023-09-21 14:33:10.760031+00:00
+[2023-09-21T14:34:22.936+0000] {standard_task_runner.py:57} INFO - Started process 1798 to run task
+[2023-09-21T14:34:22.940+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'training_dag', 'training', 'manual__2023-09-21T14:33:10.760031+00:00', '--job-id', '210', '--raw', '--subdir', 'DAGS_FOLDER/training_dag.py', '--cfg-path', '/tmp/tmpd7g6st3h']
+[2023-09-21T14:34:22.944+0000] {standard_task_runner.py:85} INFO - Job 210: Subtask training
+[2023-09-21T14:34:22.998+0000] {task_command.py:415} INFO - Running <TaskInstance: training_dag.training manual__2023-09-21T14:33:10.760031+00:00 [running]> on host 44511c2b2f88
+[2023-09-21T14:34:23.084+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='admin' AIRFLOW_CTX_DAG_ID='training_dag' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2023-09-21T14:33:10.760031+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-21T14:33:10.760031+00:00'
+[2023-09-21T14:34:23.627+0000] {logging_mixin.py:151} INFO - Cross validation results: {'fit_time': array([0.05719805, 0.08175182, 0.06980777, 0.06121135, 0.05634284]), 'score_time': array([0.00473523, 0.00486708, 0.00708246, 0.0051167 , 0.00417948]), 'test_neg_mean_squared_error': array([-8.95888683e+10, -3.59206323e+10, -3.40740138e+10, -2.07968145e+10,
+       -5.62691692e+10]), 'train_neg_mean_squared_error': array([-1.99310345e+07, -1.99310345e+07, -1.92666667e+07, -4.26635742e-03,
+       -1.92666667e+07]), 'test_r2': array([-4.78987834, -4.13943742,  0.0462952 ,  0.04289962, -0.30386616]), 'train_r2': array([0.99940427, 0.99940932, 0.99934837, 1.        , 0.99917592])}
+[2023-09-21T14:34:23.952+0000] {logging_mixin.py:151} INFO - Mean accuracy score: -1.83+/-2.17
+[2023-09-21T14:34:23.954+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/training/training.py", line 76, in train_eval_save_model
+    joblib.dump(model, model_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 552, in dump
+    with open(filename, 'wb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/models/model.pkl'
+[2023-09-21T14:34:23.967+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=training_dag, task_id=training, execution_date=20230921T143310, start_date=20230921T143422, end_date=20230921T143423
+[2023-09-21T14:34:23.979+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 210 for task training ([Errno 2] No such file or directory: '/opt/airflow/models/model.pkl'; 1798)
+[2023-09-21T14:34:23.999+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-21T14:34:24.019+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
